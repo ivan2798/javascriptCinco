@@ -46,7 +46,7 @@ completarCena(); //si no ponemos solucion, comenzariamos a cenar antes que la pi
 */
 
 //promesas
-
+/*
 let p = new Promise((resolve,reject)=>{
     const succes = true;
     if(succes){
@@ -91,3 +91,43 @@ encargarPizza.then((result)=>{
         })
     })
 })
+
+*/
+//En la vida real
+
+/*
+const stockData = () =>{
+    //Yahoo finance
+    fetch(url).then(response => response.json()).then(data => console.log(data));
+
+}
+*/
+//3 async - await
+
+const encargarPizza = new Promise(resolve=>{
+    setTimeout(()=>resolve("Llega la pizza"), 5000)
+})
+
+const ponerMesa = new Promise(resolve=>{
+    setTimeout(()=>resolve("Mesa puesta"), 2000)
+})
+
+const abrirVino = new Promise(resolve=>{
+    setTimeout(()=>resolve("Abrir vino"), 1000)
+})
+
+const cenar = new Promise(resolve=>{
+    resolve("Ya esmaos comiendo")
+})
+
+const comenzarCena = async () => {
+      const pizza = await encargarPizza;
+      console.log(pizza)
+      const mesa = await ponerMesa
+      console.log(mesa)
+      const vino = await abrirVino
+      console.log(vino)
+      const comemos = await cenar
+      console.log(comemos)
+}
+comenzarCena()
